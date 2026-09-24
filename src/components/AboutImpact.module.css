@@ -1,0 +1,254 @@
+.impactSection {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  background-color: var(--brand-deep, #052E16);
+  background-image: url('../assets/about_impact_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--text-primary);
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.backgroundOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Deep green gradient overlay */
+  background: linear-gradient(135deg, rgba(5, 46, 22, 0.92) 0%, rgba(20, 83, 45, 0.88) 100%);
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+    align-items: stretch;
+  }
+}
+
+/* --- Left Column --- */
+.leftColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .leftColumn {
+    width: 60%;
+    padding-right: 60px;
+  }
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.heading {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 24px;
+}
+
+.highlight {
+  color: var(--text-accent);
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 48px;
+  max-width: 600px;
+}
+
+/* Audience Blocks */
+.audienceBlocks {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+@media (min-width: 768px) {
+  .audienceBlocks {
+    flex-direction: row;
+    gap: 30px;
+  }
+}
+
+.divider {
+  display: none;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 0 10px;
+}
+
+@media (min-width: 768px) {
+  .divider {
+    display: block;
+  }
+}
+
+.audienceBlock {
+  flex: 1;
+}
+
+.iconContainer {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(22, 163, 74, 0.15);
+  border: 1px solid rgba(22, 163, 74, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.audienceTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.audienceDesc {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.bulletList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bulletList li {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.bulletList li::before {
+  content: '•';
+  color: var(--text-accent);
+  font-weight: bold;
+}
+
+/* --- Right Column - Ticker --- */
+.rightColumn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .rightColumn {
+    width: 40%;
+  }
+}
+
+.tickerWrapper {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  position: relative;
+  /* Fading top and bottom for the ticker */
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+.tickerTrack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: scrollUp 40s linear infinite;
+}
+
+.tickerTrack:hover {
+  animation-play-state: paused;
+}
+
+/* We have 3 copies of 4 stats (12 total).
+   To loop perfectly, we scroll by exactly 33.333% (1 set out of 3) */
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-33.3333%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tickerTrack {
+    animation-duration: 120s;
+  }
+}
+
+.statCard {
+  background: rgba(20, 83, 45, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 40px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.statCard:hover {
+  border-color: rgba(34, 197, 94, 0.6);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(34, 197, 94, 0.15);
+  background: rgba(20, 83, 45, 0.6);
+}
+
+.statValue {
+  font-size: clamp(32px, 3vw, 44px);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.statLabel {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+  font-weight: 500;
+}

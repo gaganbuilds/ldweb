@@ -1,0 +1,190 @@
+.sectionWrapper {
+  background-color: #ffffff;
+  padding: 80px 0 100px;
+  font-family: var(--font-main, 'Inter', sans-serif);
+  overflow: hidden;
+  width: 100%;
+}
+
+.container {
+  max-width: 1400px; /* Wide container for 4 cards */
+  margin: 0 auto;
+  position: relative;
+  padding: 0 40px;
+}
+
+/* SECTION HEADER */
+.sectionHeader {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.accentWord {
+  color: var(--brand-primary);
+  position: relative;
+  display: inline-block;
+}
+
+.accentWord::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--brand-primary);
+}
+
+/* CAROUSEL */
+.carouselContainer {
+  position: relative;
+  width: 100%;
+}
+
+.carouselViewport {
+  width: 100%;
+  overflow: hidden;
+  padding: 15px 0; /* padding for shadows */
+}
+
+.carouselTrack {
+  display: flex;
+  gap: 20px; /* Spacing between cards */
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.cardSlide {
+  flex-shrink: 0;
+}
+
+/* CARD DESIGN */
+.blogCard {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  border: 1px solid #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  height: 340px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.blogCard:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.cardImageWrapper {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blogCard:hover .cardImage {
+  transform: scale(1.05);
+}
+
+.cardContent {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cardTitleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.arrowIcon {
+  color: #9ca3af;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.cardDate {
+  margin-top: auto;
+  text-align: right;
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* NAVIGATION BUTTONS */
+.navControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.navButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1.5px solid var(--brand-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--brand-primary);
+  transition: all 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: var(--brand-bg);
+  transform: scale(1.05);
+}
+
+.navButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  background-color: #ffffff;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .sectionHeader {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  .blogCard {
+    height: 320px;
+  }
+}

@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #0b0b0c;
+  --bg-gradient-1: #111011;
+  --bg-gradient-2: #180b10;
+  
+  --brand-primary: #16A34A;
+  --brand-secondary: #22C55E;
+  --brand-light: #86EFAC;
+  --brand-dark: #14532D;
+  --brand-deep: #052E16;
+  --brand-bg: #F0FDF4;
+
+  --brand-gradient: linear-gradient(135deg, #14532D 0%, #16A34A 50%, #22C55E 100%);
+  --brand-bg-gradient-subtle: linear-gradient(135deg, #F0FDF4 0%, #FFFFFF 100%);
+  --brand-bg-gradient-dark: linear-gradient(135deg, #052E16 0%, #14532D 55%, #166534 100%);
+
+  --text-primary: #ffffff;
+  --text-secondary: #a3a3a3;
+  --text-accent: var(--brand-primary);
+  
+  --border-color: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-bg-hover: rgba(255, 255, 255, 0.06);
+  
+  --font-main: 'Outfit', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  overflow-x: hidden;
+  padding-bottom: 50px; /* Space for the bottom contact bar */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}

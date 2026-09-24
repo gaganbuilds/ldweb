@@ -1,0 +1,258 @@
+.sectionWrapper {
+  background-color: #ffffff;
+  padding: 80px 0;
+  font-family: var(--font-main, 'Inter', sans-serif);
+  overflow: hidden;
+  width: 100%;
+}
+
+.container {
+  max-width: 1350px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 60px; /* Space for arrows */
+}
+
+.sectionIntro {
+  text-align: center;
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+
+/* CAROUSEL */
+.carouselContainer {
+  position: relative;
+  width: 100%;
+}
+
+.carouselViewport {
+  width: 100%;
+  overflow: hidden;
+  padding: 10px 0; /* Add slight padding so shadows aren't clipped */
+}
+
+.carouselTrack {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.cardSlide {
+  flex-shrink: 0;
+  /* width is controlled via inline style dynamically */
+}
+
+/* CARD DESIGN */
+.testimonialCard {
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #f1f3f5;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  padding: 28px 24px;
+  height: 560px; /* fixed height as requested */
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+}
+
+.testimonialCard:hover {
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #e8f5e9;
+  color: #16a34a;
+  font-weight: 700;
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.headerText {
+  margin-left: 14px;
+  flex-grow: 1;
+}
+
+.learnerName {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 2px;
+}
+
+.learnerRole {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.linkedinIcon {
+  color: #0a66c2;
+  flex-shrink: 0;
+}
+
+.category {
+  font-size: 11px;
+  font-weight: 700;
+  color: #16a34a;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+/* SCROLLABLE POST CONTENT */
+.postContent {
+  flex-grow: 1;
+  overflow-y: auto;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #374151;
+  padding-right: 12px; /* space for scrollbar */
+  white-space: pre-line;
+}
+
+/* Custom Scrollbar for the card content */
+.postContent::-webkit-scrollbar {
+  width: 6px;
+}
+.postContent::-webkit-scrollbar-track {
+  background: #f9fafb;
+  border-radius: 4px;
+}
+.postContent::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+.postContent::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+.tagsContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px; /* space at the bottom of scroll */
+}
+
+.tagPill {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* NAVIGATION ARROWS */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #111111;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.navButton:hover {
+  background-color: #f9fafb;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.navButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.prevButton {
+  left: 0;
+}
+
+.nextButton {
+  right: 0;
+}
+
+/* PAGINATION DOTS */
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.dotActive {
+  background-color: #16a34a;
+  transform: scale(1.2);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .testimonialCard {
+    height: 540px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+  
+  .testimonialCard {
+    height: 520px;
+  }
+  
+  /* On mobile, move arrows outside the main flow or overlay them subtly */
+  .prevButton {
+    left: -10px;
+    width: 40px;
+    height: 40px;
+  }
+  .nextButton {
+    right: -10px;
+    width: 40px;
+    height: 40px;
+  }
+}

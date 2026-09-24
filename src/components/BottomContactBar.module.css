@@ -1,0 +1,95 @@
+.barContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FDE8EC; /* Soft light pink */
+  border-top: 1px solid #FBCFE8;
+  z-index: 50;
+  padding: 12px 16px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  font-family: var(--font-main, 'Inter', sans-serif);
+}
+
+.content {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 14px;
+  color: #111827;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .content {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 15px;
+    padding: 0 16px;
+  }
+}
+
+.mainText {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actionGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.callBtn,
+.whatsappBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.callBtn {
+  background-color: var(--brand-primary, #16A34A);
+  color: white;
+  border: 1px solid var(--brand-primary, #16A34A);
+}
+
+.callBtn:hover {
+  background-color: var(--brand-dark, #14532D);
+  border-color: var(--brand-dark, #14532D);
+  transform: translateY(-1px);
+}
+
+.whatsappBtn {
+  background-color: #25D366;
+  color: white;
+  border: 1px solid #25D366;
+}
+
+.whatsappBtn:hover {
+  background-color: #128C7E;
+  border-color: #128C7E;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 400px) {
+  .callBtn,
+  .whatsappBtn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}

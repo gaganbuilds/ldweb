@@ -1,0 +1,198 @@
+.sectionWrapper {
+  background-color: #ffffff;
+  padding: 80px 0;
+  overflow: hidden;
+  font-family: var(--font-main, 'Inter', sans-serif);
+  width: 100%;
+}
+
+.container {
+  max-width: 1350px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* LEFT COLUMN - Fixed Content */
+.leftColumn {
+  flex: 0 0 32%;
+  padding-left: 40px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 10;
+  background-color: #ffffff;
+}
+
+.heading {
+  font-size: 42px;
+  font-weight: 800;
+  color: #111111;
+  line-height: 1.15;
+  margin-bottom: 40px;
+  letter-spacing: -0.5px;
+}
+
+.navButtons {
+  display: flex;
+  gap: 15px;
+}
+
+.navButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #111111;
+  transition: all 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: #f1f5f9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* RIGHT COLUMN - Carousel */
+.rightColumn {
+  flex: 0 0 68%;
+  position: relative;
+  width: 100%;
+}
+
+.carouselViewport {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* Extra padding to prevent clipping of Y-transforms and shadows */
+  padding: 60px 0;
+  margin: -60px 0;
+}
+
+.carouselTrack {
+  display: flex;
+  align-items: center;
+  /* padding-left exactly aligns the first card's center (15px + 140px = 155px) with the SVG curve's peak */
+  padding-left: 15px;
+  
+  /* The Journey Curve SVG Background */
+  /* Period = 620px, Height = 80px */
+  /* Peak is at X=155, Valley is at X=465 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='620' height='80' viewBox='0 0 620 80'%3E%3Cpath d='M 0 40 Q 155 0, 310 40 T 620 40' fill='none' stroke='%23b5d800' stroke-width='2' stroke-dasharray='5,5' stroke-linecap='round' /%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: left 0px center;
+  height: 420px;
+  
+  /* hardware acceleration */
+  will-change: transform;
+}
+
+.cardSlide {
+  /* Fixed width is required to keep mathematical alignment with the background SVG */
+  flex: 0 0 280px;
+  margin-right: 30px; /* Step size = 280 + 30 = 310. Two steps = 620px (exact SVG period) */
+}
+
+/* STAGGERING - Follows the curve */
+/* The background peak is at Y=0 (top), valley at Y=80 (bottom). Center is Y=40. */
+/* We translate odd items up by 40px, even items down by 40px */
+.cardSlide:nth-child(odd) {
+  transform: translateY(-40px);
+}
+
+.cardSlide:nth-child(even) {
+  transform: translateY(40px);
+}
+
+/* CARD DESIGN */
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #f1f3f5;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+  padding: 32px 24px;
+  height: 320px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+}
+
+.cardNumber {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-size: 36px;
+  font-weight: 800;
+  color: #111111;
+  opacity: 0.08;
+  line-height: 1;
+}
+
+.iconCircle {
+  width: 64px;
+  height: 64px;
+  background-color: #edf3f6;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #245c80;
+  margin-bottom: 24px;
+}
+
+.cardTitle {
+  font-size: 19px;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.cardDescription {
+  font-size: 13px;
+  color: #6f6f6f;
+  line-height: 1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .leftColumn { flex: 0 0 35%; padding-left: 20px; padding-right: 10px; }
+  .rightColumn { flex: 0 0 65%; }
+  .heading { font-size: 34px; margin-bottom: 30px; }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 0;
+  }
+  .leftColumn {
+    flex: none;
+    width: 100%;
+    padding: 0 20px;
+    margin-bottom: 10px;
+  }
+  .heading {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  .rightColumn {
+    flex: none;
+    width: 100%;
+  }
+  .carouselTrack {
+    height: 400px;
+  }
+}
