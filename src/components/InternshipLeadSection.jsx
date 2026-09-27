@@ -12,7 +12,7 @@ export default function InternshipLeadSection() {
         <div className={styles.leftContent}>
           <h2 className={styles.headline}>
             <span>India's Most Trusted and Leading</span>
-            <span className={styles.highlight}>IT Training & Career Platform</span>
+            <span className={styles.highlight}>IT Training & Learning-Based Internship Provider</span>
             <span>Built for Real-World Opportunities</span>
           </h2>
           
@@ -42,7 +42,9 @@ export default function InternshipLeadSection() {
           </svg>
           
           <div className={styles.formCard}>
-            <h3 className={styles.formHeading}>Let's talk about your career growth!</h3>
+            <h3 className={styles.formHeading}>Start Your Internship Journey With LearnDepth</h3>
+            <p className={styles.formSubheading}>Build real-world skills, work on practical projects, learn from mentors, and gain industry-focused experience through LearnDepth internship programs.</p>
+            <p className={styles.formContextText}>Interested in gaining real-world industry experience? Apply for a LearnDepth internship and take the next step toward becoming career-ready.</p>
             <InternshipLeadForm />
           </div>
         </div>
