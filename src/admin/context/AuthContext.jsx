@@ -8,6 +8,8 @@ export const AuthContext = createContext({
   loading: true,
   signIn: async () => {},
   signOut: async () => {},
+  resetPassword: async () => {},
+  updatePassword: async () => {},
 });
 
 export const AuthProvider = ({ children }) => {
@@ -90,6 +92,8 @@ export const AuthProvider = ({ children }) => {
     loading,
     signIn: (email, password) => supabase.auth.signInWithPassword({ email, password }),
     signOut: () => supabase.auth.signOut(),
+    resetPassword: (email, options) => supabase.auth.resetPasswordForEmail(email, options),
+    updatePassword: (password) => supabase.auth.updateUser({ password }),
   };
 
   return (

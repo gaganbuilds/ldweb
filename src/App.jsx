@@ -12,6 +12,7 @@ import { AuthProvider } from './admin/context/AuthContext';
 import AdminLayout from './admin/components/AdminLayout';
 import ProtectedRoute from './admin/components/ProtectedRoute';
 import AdminLogin from './admin/pages/AdminLogin';
+import AdminResetPassword from './admin/pages/AdminResetPassword';
 import AdminDashboard from './admin/pages/AdminDashboard';
 import TestimonialList from './admin/pages/testimonials/TestimonialList';
 import TestimonialForm from './admin/pages/testimonials/TestimonialForm';
@@ -58,6 +59,7 @@ function App() {
           
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/reset-password" element={<AdminResetPassword />} />
           
           <Route path="/admin" element={<ProtectedRoute requireAdmin={true} />}>
             {/* The AdminLayout serves as the layout wrapper for child routes */}
