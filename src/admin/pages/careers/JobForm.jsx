@@ -369,6 +369,31 @@ export default function JobForm() {
           )}
         </div>
 
+        {/* SECTION Z — SEO Settings */}
+        <div className="admin-card" style={{ marginBottom: '24px' }}>
+          <h2 style={{ fontSize: '18px', marginBottom: '20px', borderBottom: '1px solid #e2e8f0', paddingBottom: '12px' }}>SEO Settings</h2>
+          
+          <div className="admin-form-group">
+            <label>SEO Title (Optional - overrides default job title format)</label>
+            <input type="text" name="seo_title" value={formData.seo_title} onChange={handleChange} className="admin-input" placeholder="e.g. Senior Backend Engineer Job in Bangalore | LearnDepth" />
+          </div>
+          
+          <div className="admin-form-group">
+            <label>SEO Description (Optional - overrides default job short description)</label>
+            <textarea name="seo_description" value={formData.seo_description} onChange={handleChange} className="admin-input" style={{ height: '80px', resize: 'vertical' }} placeholder="Meta description for search engines..."></textarea>
+          </div>
+          
+          <div className="admin-form-group">
+            <label>Canonical URL (Optional)</label>
+            <input type="url" name="canonical_url" value={formData.canonical_url} onChange={handleChange} className="admin-input" placeholder="e.g. https://www.learndepthacademy.com/careers/jobs/..." />
+          </div>
+          
+          <div className="admin-form-group" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '16px' }}>
+            <input type="checkbox" name="no_index" checked={formData.no_index} onChange={handleChange} id="job_no_index" style={{ width: '18px', height: '18px' }} />
+            <label htmlFor="job_no_index" style={{ margin: 0, fontWeight: 'normal' }}>No Index (Hide this job from search engines)</label>
+          </div>
+        </div>
+
       </form>
     </div>
   );

@@ -25,9 +25,10 @@ export default function BlogForm() {
     thumbnail_image_url: '',
     status: 'draft',
     seo_title: '',
-    meta_description: '',
+    seo_description: '',
     focus_keyword: '',
-    canonical_url: ''
+    canonical_url: '',
+    no_index: false
   });
 
   const [selectedTags, setSelectedTags] = useState([]);
@@ -346,7 +347,7 @@ export default function BlogForm() {
             
             <div className="admin-form-group">
               <label>Meta Description</label>
-              <textarea name="meta_description" value={formData.meta_description} onChange={handleChange} className="admin-textarea" rows="3" />
+              <textarea name="seo_description" value={formData.seo_description} onChange={handleChange} className="admin-textarea" rows="3" />
             </div>
 
             <div className="admin-form-group">
@@ -356,7 +357,12 @@ export default function BlogForm() {
 
             <div className="admin-form-group">
               <label>Canonical URL</label>
-              <input type="text" name="canonical_url" value={formData.canonical_url} onChange={handleChange} className="admin-input" placeholder="https://learndepth.com/blog/..." />
+              <input type="url" name="canonical_url" value={formData.canonical_url} onChange={handleChange} className="admin-input" placeholder="https://www.learndepthacademy.com/blog/..." />
+            </div>
+            
+            <div className="admin-form-group" style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '16px' }}>
+              <input type="checkbox" name="no_index" checked={formData.no_index} onChange={handleChange} id="blog_no_index" style={{ width: '18px', height: '18px' }} />
+              <label htmlFor="blog_no_index" style={{ margin: 0, fontWeight: 'normal' }}>No Index (Hide this blog from search engines)</label>
             </div>
           </div>
         )}

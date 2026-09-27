@@ -1,4 +1,6 @@
 import Navbar from '../components/Navbar';
+import SEOHead from '../components/SEOHead';
+import { buildWebSiteSchema, buildOrganizationSchema } from '../utils/schemaBuilders';
 import TopAnnouncementBar from '../components/TopAnnouncementBar';
 import Hero from '../components/Hero';
 import InternshipLeadSection from '../components/InternshipLeadSection';
@@ -19,6 +21,12 @@ import Footer from '../components/Footer';
 export default function Home() {
   return (
     <>
+      <SEOHead 
+        title="LearnDepth Academy | Industry-Ready Courses, Internships & Career Programs"
+        description="LearnDepth Academy helps students and professionals build industry-ready skills through technology courses, internships, mentorship, workshops and career-focused programs."
+        canonicalUrl="https://www.learndepthacademy.com"
+        schema={[buildWebSiteSchema(), buildOrganizationSchema()]}
+      />
       <Navbar />
       <TopAnnouncementBar />
       <main>

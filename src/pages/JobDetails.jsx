@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import SEOHead from '../components/SEOHead';
+import { buildJobPostingSchema } from '../utils/schemaBuilders';
 import { supabase } from '../admin/services/supabase';
 import { 
   ArrowLeft, MapPin, Briefcase, Clock, 
@@ -145,8 +147,25 @@ export default function JobDetails() {
 
   const postedDateStr = getDaysAgo(job.published_at || job.created_at);
 
+  const breadcrumbs = [
+    { name: 'Home', url: 'https://www.learndepthacademy.com' },
+    { name: 'Careers', url: 'https://www.learndepthacademy.com/careers' },
+    ...(job.job_categories ? [{ name: job.job_categories.name, url: `https://www.learndepthacademy.com/careers/category/${job.job_categories.name.toLowerCase().replace(/ /g, '-')}` }] : []),
+    { name: job.title, url: `https://www.learndepthacademy.com/careers/jobs/${slug}` }
+  ];
+
   return (
     <div className={styles.page}>
+      <SEOHead 
+        title={job.seo_title || `${job.title} at ${job.company_name} | Careers`}
+        description={job.seo_description || job.short_description || `Apply for ${job.title} at ${job.company_name}`}
+        canonicalUrl={job.canonical_url || `https://www.learndepthacademy.com/careers/jobs/${slug}`}
+        robots={job.no_index ? 'noindex, nofollow' : 'index, follow'}
+        ogType="website"
+        ogImage={job.og_image || job.company_logo_url || '/logo.svg'}
+        schema={buildJobPostingSchema(job)}
+        breadcrumbs={breadcrumbs}
+      />
       <Navbar />
       
       <main className={styles.main}>

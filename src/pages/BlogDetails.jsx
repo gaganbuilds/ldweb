@@ -3,6 +3,8 @@ import { useParams, Link } from 'react-router-dom';
 import { Bookmark, Share2, Tag } from 'lucide-react';
 import { blogService } from '../admin/services/blogService';
 import { cmsService } from '../admin/services/cmsService';
+import SEOHead from '../components/SEOHead';
+import { buildArticleSchema } from '../utils/schemaBuilders';
 import Navbar from '../components/Navbar';
 import BlogSlider from '../components/BlogSlider';
 import CareerCTASection from '../components/CareerCTASection';
@@ -83,8 +85,27 @@ export default function BlogDetails() {
   if (loading) return <div><Navbar /><div style={{ padding: '100px', textAlign: 'center' }}>Loading article...</div></div>;
   if (error || !blog) return <div><Navbar /><div style={{ padding: '100px', textAlign: 'center' }}>Article not found.</div></div>;
 
+  const breadcrumbs = [
+    { name: 'Home', url: 'https://www.learndepthacademy.com' },
+    { name: 'Blog', url: 'https://www.learndepthacademy.com/blog' },
+    { name: blog.category?.name || 'Category', url: 'https://www.learndepthacademy.com/blog' },
+    { name: blog.title, url: `https://www.learndepthacademy.com/blog/${slug}` }
+  ];
+
   return (
     <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', paddingBottom: '0' }}>
+      <SEOHead 
+        title={blog.seo_title || `${blog.title} | LearnDepth Blog`}
+        description={blog.seo_description || blog.excerpt || blog.title}
+        canonicalUrl={blog.canonical_url || `https://www.learndepthacademy.com/blog/${slug}`}
+        ogType="article"
+        ogImage={blog.og_image || blog.featured_image_url}
+        author={blog.author?.name}
+        publishedDate={blog.published_at || blog.created_at}
+        modifiedDate={blog.updated_at}
+        schema={buildArticleSchema(blog)}
+        breadcrumbs={breadcrumbs}
+      />
       <Navbar />
       
       <main className={styles.blogLayout}>

@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*?*
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://www.learndepthacademy.com/sitemap.xml

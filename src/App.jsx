@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
 import Careers from './pages/Careers';
+import ProgramDetails from './pages/ProgramDetails';
+import InternshipDetails from './pages/InternshipDetails';
+import NotFound from './pages/NotFound';
 import JobDetails from './pages/JobDetails';
 import JobCategory from './pages/JobCategory';
 import JobApplication from './pages/JobApplication';
@@ -56,6 +59,8 @@ function App() {
           <Route path="/careers/jobs/:slug" element={<JobDetails />} />
           <Route path="/careers/jobs/:slug/apply" element={<JobApplication />} />
           <Route path="/careers/category/:slug" element={<JobCategory />} />
+          <Route path="/programs/:slug" element={<ProgramDetails />} />
+          <Route path="/internships/:slug" element={<InternshipDetails />} />
           
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
@@ -110,7 +115,7 @@ function App() {
           </Route>
           
           {/* Fallback */}
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <BottomContactBar />
       </BrowserRouter>
