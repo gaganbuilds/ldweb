@@ -1,0 +1,207 @@
+.section {
+  padding: 80px 24px;
+  background-color: var(--bg-dark, #0b0b0c); /* Maintain general site theme or use light? Prompt says: "White/light background" for cards, but the section itself can match the site. Wait, the prompt says "White/light background" for the *cards*. Let's make the section background match the site, or a slightly off-dark. Let's use the main background color. */
+  background: var(--brand-bg-gradient-subtle, linear-gradient(135deg, #F0FDF4 0%, #FFFFFF 100%));
+  color: #111;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Carousel */
+.carouselWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.carouselTrack {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 24px; /* Space for scrollbar */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.carouselTrack::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.card {
+  flex: 0 0 100%; /* Mobile: 1 card */
+  scroll-snap-align: start;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 480px; /* Consistent height */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+@media (min-width: 500px) {
+  .card {
+    flex: 0 0 calc(50% - 12px); /* Tablet: 2 cards */
+  }
+}
+
+@media (min-width: 768px) {
+  .card {
+    flex: 0 0 calc(33.333% - 16px); /* Desktop small: 3 cards */
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    flex: 0 0 calc(25% - 18px); /* Desktop large: 4 cards */
+  }
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  border-color: rgba(22, 163, 74, 0.2);
+}
+
+.cardContent {
+  padding: 32px 24px 24px;
+  flex: 1;
+}
+
+.cardTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.cardDescription {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.cardClarification {
+  display: block;
+  font-size: 12px;
+  color: var(--brand-primary, #16A34A);
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.cardImageWrapper {
+  width: 100%;
+  height: 200px; /* approximately 40% of 480px */
+  background: #f5f5f5;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.05);
+}
+
+/* Grayscale/Duotone treatment to match reference if desired */
+.cardImage {
+  filter: grayscale(100%) contrast(1.1);
+  mix-blend-mode: multiply;
+}
+
+.cardImageWrapper::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.02); /* Slight overlay */
+  pointer-events: none;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.controlButton {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.controlButton:hover:not(:disabled) {
+  border-color: var(--brand-primary, #16A34A);
+  color: var(--brand-primary, #16A34A);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.15);
+}
+
+.controlButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #f9f9f9;
+}
+
+.indicators {
+  display: flex;
+  gap: 8px;
+}
+
+.indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.indicatorActive {
+  background: var(--brand-primary, #16A34A);
+  width: 24px;
+  border-radius: 4px;
+}

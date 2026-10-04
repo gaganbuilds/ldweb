@@ -12,6 +12,7 @@ const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
   { label: 'Careers', href: '/careers' },
+  { label: 'Partner With Us', href: '/hire-from-us' },
   { label: 'CodeDepth', href: 'https://codedepth.site', external: true }
 ];
 

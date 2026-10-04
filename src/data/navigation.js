@@ -24,5 +24,9 @@ export const navigation = [
   {
     label: "Careers",
     href: "/careers"
+  },
+  {
+    label: "Partner With Us",
+    href: "/hire-from-us"
   }
 ];

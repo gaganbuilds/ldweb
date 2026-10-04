@@ -29,6 +29,7 @@ async function generateSitemap() {
   addUrl(`${DOMAIN}/`, 1.0, 'daily');
   addUrl(`${DOMAIN}/about`, 0.8, 'monthly');
   addUrl(`${DOMAIN}/careers`, 0.9, 'weekly');
+  addUrl(`${DOMAIN}/hire-from-us`, 0.8, 'monthly');
   
   // 2. Hardcoded Programs & Internships from data files
   const programs = ['data-science', 'machine-learning', 'generative-ai', 'full-stack-development', 'dsa', 'python'];

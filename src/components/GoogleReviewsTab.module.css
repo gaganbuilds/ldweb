@@ -1,0 +1,93 @@
+.reviewsTab {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 66px;
+  height: 200px;
+  background-color: #f9fafb; /* light gray/white neutral */
+  border: 1px solid #e5e7eb;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  z-index: 9999;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.reviewsTab:hover, .reviewsTab:focus-visible {
+  transform: translateY(-50%) translateX(3px);
+  box-shadow: 4px 6px 16px rgba(0, 0, 0, 0.12);
+  outline: none;
+}
+
+.reviewsTab:focus-visible {
+  border: 2px solid #10b981;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.logoContainer svg {
+  width: 30px;
+  height: 30px;
+}
+
+.verticalText {
+  writing-mode: vertical-rl;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #374151;
+  letter-spacing: 0.5px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrowIcon {
+  color: #6b7280;
+  margin-top: 12px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.reviewsTab:hover .arrowIcon, .reviewsTab:focus-visible .arrowIcon {
+  transform: translateX(4px);
+  color: #10b981; /* Subtle LearnDepth green hover accent */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .reviewsTab {
+    width: 52px;
+    height: 160px;
+    padding: 12px 0;
+    /* Position slightly lower so it doesn't overlap common mobile center elements */
+    top: 60%;
+  }
+
+  .logoContainer svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .verticalText {
+    font-size: 0.9rem;
+  }
+
+  .arrowIcon {
+    width: 18px;
+    height: 18px;
+  }
+}

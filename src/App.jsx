@@ -8,7 +8,9 @@ import NotFound from './pages/NotFound';
 import JobDetails from './pages/JobDetails';
 import JobCategory from './pages/JobCategory';
 import JobApplication from './pages/JobApplication';
-import JobListings from './components/JobListings'; // Just reusing Careers for /careers/jobs if we want to
+import CampusAmbassador from './pages/CampusAmbassador';
+import DataSciencePage from './pages/DataSciencePage';
+import HireFromUs from './pages/HireFromUs';
 
 // Admin imports
 import { AuthProvider } from './admin/context/AuthContext';
@@ -35,6 +37,7 @@ import AdForm from './admin/pages/ads/AdForm';
 // CRM
 import InternshipEnquiryList from './admin/pages/enquiries/InternshipEnquiryList';
 import ProgramEnquiryList from './admin/pages/enquiries/ProgramEnquiryList';
+import HireFromUsList from './admin/pages/enquiries/HireFromUsList';
 
 // Careers
 import JobCategoryList from './admin/pages/careers/JobCategoryList';
@@ -44,6 +47,7 @@ import JobForm from './admin/pages/careers/JobForm';
 import ApplicationList from './admin/pages/careers/ApplicationList';
 import ApplicationDetail from './admin/pages/careers/ApplicationDetail';
 import BottomContactBar from './components/BottomContactBar';
+import GoogleReviewsTab from './components/GoogleReviewsTab';
 
 function App() {
   return (
@@ -60,7 +64,9 @@ function App() {
           <Route path="/careers/jobs/:slug/apply" element={<JobApplication />} />
           <Route path="/careers/category/:slug" element={<JobCategory />} />
           <Route path="/programs/:slug" element={<ProgramDetails />} />
-          <Route path="/internships/:slug" element={<InternshipDetails />} />
+          <Route path="/campus-ambassador" element={<CampusAmbassador />} />
+          <Route path="/data-science" element={<DataSciencePage />} />
+          <Route path="/hire-from-us" element={<HireFromUs />} />
           
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
@@ -101,6 +107,7 @@ function App() {
               {/* Lead Management */}
               <Route path="program-enquiries" element={<ProgramEnquiryList />} />
               <Route path="internship-enquiries" element={<InternshipEnquiryList />} />
+              <Route path="hire-from-us" element={<HireFromUsList />} />
 
               {/* Careers */}
               <Route path="jobs" element={<JobList />} />
@@ -118,6 +125,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <BottomContactBar />
+        <GoogleReviewsTab />
       </BrowserRouter>
     </AuthProvider>
   );
