@@ -49,6 +49,7 @@ import ApplicationList from './admin/pages/careers/ApplicationList';
 import ApplicationDetail from './admin/pages/careers/ApplicationDetail';
 import BottomContactBar from './components/BottomContactBar';
 import GoogleReviewsTab from './components/GoogleReviewsTab';
+import MLInternshipPopup from './components/MLInternshipPopup';
 
 function App() {
   return (
@@ -127,6 +128,7 @@ function App() {
           {/* Fallback */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <MLInternshipPopup />
         <BottomContactBar />
         <GoogleReviewsTab />
       </BrowserRouter>

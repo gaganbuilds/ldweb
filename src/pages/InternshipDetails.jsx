@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEOHead from '../components/SEOHead';
@@ -16,6 +16,7 @@ import '../styles/MLInternshipHero.css';
 export default function InternshipDetails() {
   const { slug } = useParams();
   const navigate = useNavigate();
+  const { hash } = useLocation();
   const [internship, setInternship] = useState(null);
 
   useEffect(() => {
@@ -25,6 +26,21 @@ export default function InternshipDetails() {
       navigate('/404');
     }
   }, [slug, navigate]);
+
+  // Handle Hash Scrolling
+  useEffect(() => {
+    if (hash) {
+      setTimeout(() => {
+        const id = hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 300);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [hash, slug]);
 
   if (!internship) return <div className="loading-container">Loading...</div>;
 
@@ -107,7 +123,10 @@ export default function InternshipDetails() {
               <div className="ml-hero-actions">
                 <button 
                   className="ml-hero-btn-primary"
-                  onClick={() => window.location.href = '/?program=' + slug + '#internship-form'}
+                  onClick={() => {
+                    const formSection = document.getElementById('internship-form');
+                    if (formSection) formSection.scrollIntoView({ behavior: 'smooth' });
+                  }}
                 >
                   Apply for ML Internship →
                 </button>
@@ -169,7 +188,10 @@ export default function InternshipDetails() {
           <button 
             className="cta-button" 
             style={{ padding: '12px 24px', background: '#2563eb', color: 'white', border: 'none', borderRadius: '6px', fontSize: '1rem', cursor: 'pointer' }}
-            onClick={() => window.location.href = '/?program=' + slug + '#internship-form'}
+            onClick={() => {
+              const formSection = document.getElementById('internship-form');
+              if (formSection) formSection.scrollIntoView({ behavior: 'smooth' });
+            }}
           >
             Apply for Internship
           </button>
