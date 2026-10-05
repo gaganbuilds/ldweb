@@ -1,0 +1,312 @@
+.ml-app-cta-section {
+  background-color: #f8fafc;
+  padding: 100px 24px;
+  font-family: var(--font-main);
+  color: var(--bg-dark);
+}
+
+.ml-app-cta-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+/* Left Side */
+.ml-app-cta-left {
+  flex: 1;
+  max-width: 600px;
+  padding-top: 20px;
+}
+
+.ml-app-cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f0fdf4;
+  color: var(--brand-primary);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+  border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+.ml-app-cta-heading {
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 24px;
+  color: var(--bg-dark);
+}
+
+.ml-app-cta-heading-accent {
+  color: var(--brand-primary);
+  display: block;
+}
+
+.ml-app-cta-desc {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin-bottom: 32px;
+}
+
+.ml-app-cta-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.ml-app-cta-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.ml-app-cta-benefit-icon {
+  color: var(--brand-primary);
+  background: #f0fdf4;
+  border-radius: 50%;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ml-app-cta-program-info {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.ml-app-cta-program-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.ml-app-cta-program-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.ml-app-cta-program-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ml-app-cta-program-stat span:first-child {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.ml-app-cta-program-stat span:last-child {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--bg-dark);
+}
+
+/* Right Side Form */
+.ml-app-cta-right {
+  flex: 1;
+  max-width: 580px;
+  width: 100%;
+}
+
+.ml-app-cta-form-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.ml-app-cta-form-heading {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--bg-dark);
+  margin-bottom: 10px;
+}
+
+.ml-app-cta-form-subheading {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.ml-app-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ml-app-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ml-app-form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.ml-app-form-input, .ml-app-form-select {
+  width: 100%;
+  padding: 14px 16px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: var(--font-main);
+  color: var(--bg-dark);
+  transition: all 0.2s ease;
+}
+
+.ml-app-form-input::placeholder {
+  color: #9ca3af;
+}
+
+.ml-app-form-input:focus, .ml-app-form-select:focus {
+  outline: none;
+  border-color: var(--brand-primary);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+.ml-app-form-submit {
+  background: var(--brand-primary);
+  color: #ffffff;
+  border: none;
+  padding: 16px;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.ml-app-form-submit:hover:not(:disabled) {
+  background: var(--brand-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(22, 163, 74, 0.2);
+}
+
+.ml-app-form-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.ml-app-form-error {
+  color: #dc2626;
+  font-size: 0.9rem;
+  margin-top: -10px;
+}
+
+.ml-app-form-global-error {
+  background: #fef2f2;
+  color: #b91c1c;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+  border: 1px solid #f87171;
+}
+
+.ml-app-form-success {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.ml-app-form-success-icon {
+  color: var(--brand-primary);
+  margin-bottom: 24px;
+  display: inline-block;
+  background: #f0fdf4;
+  padding: 20px;
+  border-radius: 50%;
+}
+
+.ml-app-form-success-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--bg-dark);
+  margin-bottom: 16px;
+}
+
+.ml-app-form-success-desc {
+  font-size: 1.1rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .ml-app-cta-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ml-app-cta-left {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .ml-app-cta-heading {
+    font-size: 2.8rem;
+  }
+  
+  .ml-app-cta-benefits {
+    align-items: center;
+  }
+  
+  .ml-app-cta-right {
+    max-width: 100%;
+  }
+  
+  .ml-app-cta-form-card {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ml-app-cta-section {
+    padding: 60px 20px;
+  }
+  
+  .ml-app-cta-heading {
+    font-size: 2.2rem;
+  }
+  
+  .ml-app-cta-form-card {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+  
+  .ml-app-form-heading {
+    font-size: 1.5rem;
+  }
+}

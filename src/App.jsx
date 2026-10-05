@@ -35,9 +35,10 @@ import AdsList from './admin/pages/ads/AdsList';
 import AdForm from './admin/pages/ads/AdForm';
 
 // CRM
-import InternshipEnquiryList from './admin/pages/enquiries/InternshipEnquiryList';
 import ProgramEnquiryList from './admin/pages/enquiries/ProgramEnquiryList';
+import InternshipEnquiryList from './admin/pages/enquiries/InternshipEnquiryList';
 import HireFromUsList from './admin/pages/enquiries/HireFromUsList';
+import InternshipApplicationList from './admin/pages/applications/InternshipApplicationList';
 
 // Careers
 import JobCategoryList from './admin/pages/careers/JobCategoryList';
@@ -64,6 +65,7 @@ function App() {
           <Route path="/careers/jobs/:slug/apply" element={<JobApplication />} />
           <Route path="/careers/category/:slug" element={<JobCategory />} />
           <Route path="/programs/:slug" element={<ProgramDetails />} />
+          <Route path="/internships/:slug" element={<InternshipDetails />} />
           <Route path="/campus-ambassador" element={<CampusAmbassador />} />
           <Route path="/data-science" element={<DataSciencePage />} />
           <Route path="/hire-from-us" element={<HireFromUs />} />
@@ -107,6 +109,7 @@ function App() {
               {/* Lead Management */}
               <Route path="program-enquiries" element={<ProgramEnquiryList />} />
               <Route path="internship-enquiries" element={<InternshipEnquiryList />} />
+              <Route path="internship-applications" element={<InternshipApplicationList />} />
               <Route path="hire-from-us" element={<HireFromUsList />} />
 
               {/* Careers */}

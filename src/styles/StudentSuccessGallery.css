@@ -1,0 +1,311 @@
+.ld-success-section {
+  padding: 80px 20px;
+  background-color: #0f172a; /* deep charcoal */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background emerald/green gradients */
+.ld-success-section::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ld-success-section::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.ld-success-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  min-height: 700px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Left Content Area */
+.ld-success-left {
+  flex: 0 0 40%;
+  padding-right: 20px;
+}
+
+.ld-success-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.ld-success-highlight {
+  color: var(--brand-primary);
+}
+
+.ld-success-desc {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 50px;
+  max-width: 90%;
+}
+
+/* Statistics */
+.ld-success-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+}
+
+/* Subtle vertical divider */
+.ld-success-stats::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(to bottom, rgba(16, 185, 129, 0.3), rgba(16, 185, 129, 0.05));
+}
+
+.ld-stat-block {
+  padding-left: 30px;
+  position: relative;
+}
+
+.ld-stat-block::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 18px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--brand-primary);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+.ld-stat-number {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.ld-stat-text {
+  font-size: 1.05rem;
+  color: #e2e8f0;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+/* Right Image Wall Area */
+.ld-success-right {
+  flex: 0 0 calc(60% - 60px);
+  height: 750px; /* Force a tall specific height to allow mask to work cleanly */
+}
+
+.ld-image-wall-mask {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  overflow: hidden;
+  /* Mask top and bottom for the fade effect */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.ld-image-col {
+  width: 32%; /* Approximately 1/3 of the right container */
+  position: relative;
+}
+
+.ld-image-track {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  will-change: transform;
+}
+
+.ld-success-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+/* Optional hover interaction on desktop */
+@media (hover: hover) and (pointer: fine) {
+  .ld-success-img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    position: relative;
+  }
+}
+
+/* --- ANIMATIONS --- */
+/*
+   We duplicate the image sequence. 
+   Total track height = 8 images + 7 gaps.
+   Half track (1 sequence) offset = 4 images + 4 gaps.
+   This mathematically equals exactly 50% of the track height + half a gap.
+   So translateY(calc(-50% - 10px)) shifts exactly one sequence length (if gap is 20px).
+*/
+@keyframes scrollUpGallery {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(calc(-50% - 10px)); }
+}
+
+@keyframes scrollDownGallery {
+  0% { transform: translateY(calc(-50% - 10px)); }
+  100% { transform: translateY(0); }
+}
+
+.track-up {
+  animation: scrollUpGallery linear infinite;
+}
+
+.track-down {
+  animation: scrollDownGallery linear infinite;
+}
+
+/* Different speeds to make it feel organic and non-mechanical */
+.col-1-speed { animation-duration: 42s; }
+.col-2-speed { animation-duration: 38s; }
+.col-3-speed { animation-duration: 46s; }
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .ld-image-track {
+    animation-play-state: paused !important;
+  }
+}
+
+/* --- RESPONSIVE DESIGN --- */
+
+@media (max-width: 1024px) {
+  .ld-success-container {
+    flex-direction: column;
+    gap: 50px;
+    height: auto;
+  }
+
+  .ld-success-left {
+    flex: 1 1 auto;
+    width: 100%;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .ld-success-desc {
+    margin: 0 auto 40px auto;
+  }
+
+  .ld-success-stats {
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .ld-success-stats::before {
+    display: none;
+  }
+
+  .ld-stat-block {
+    padding-left: 0;
+  }
+
+  .ld-stat-block::before {
+    display: none;
+  }
+
+  .ld-stat-number {
+    font-size: 2.8rem;
+  }
+
+  .ld-success-right {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ld-success-title {
+    font-size: 2.2rem;
+  }
+
+  .ld-success-stats {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .ld-image-wall-mask {
+    gap: 12px;
+  }
+
+  .ld-success-img {
+    height: auto;
+    border-radius: 14px;
+  }
+  
+  .ld-image-track {
+    gap: 12px;
+  }
+  
+  /* Update animation offset for new gap size (12px / 2 = 6px) */
+  .track-up {
+    animation-name: scrollUpGalleryMobile;
+  }
+  
+  .track-down {
+    animation-name: scrollDownGalleryMobile;
+  }
+}
+
+@keyframes scrollUpGalleryMobile {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(calc(-50% - 6px)); }
+}
+
+@keyframes scrollDownGalleryMobile {
+  0% { transform: translateY(calc(-50% - 6px)); }
+  100% { transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  /* On very small screens, show only 2 columns so it doesn't get squished */
+  .ld-image-col:nth-child(3) {
+    display: none;
+  }
+  
+  .ld-image-col {
+    width: 48%;
+  }
+}

@@ -1,0 +1,312 @@
+.ml-hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 700px;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  overflow: hidden;
+  font-family: var(--font-main);
+}
+
+.ml-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/ml-hero-new.png');
+  background-size: cover;
+  background-position: 65% center;
+  z-index: 0;
+}
+
+.ml-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(3, 8, 7, 0.96) 0%,
+    rgba(3, 10, 8, 0.88) 30%,
+    rgba(3, 12, 9, 0.55) 55%,
+    rgba(3, 15, 11, 0.20) 100%
+  );
+  z-index: 1;
+}
+
+.ml-hero-green-tint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 70% 50%, rgba(22, 163, 74, 0.15) 0%, transparent 60%);
+  z-index: 2;
+}
+
+.ml-hero-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 700px;
+}
+
+.ml-hero-left {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.ml-hero-right {
+  width: 40%;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  min-height: 600px;
+}
+
+.ml-hero-label {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  animation: fadeUp 0.8s ease-out;
+}
+
+.ml-hero-label-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--brand-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(22, 163, 74, 0.8);
+}
+
+.ml-hero-title {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+  margin: 0;
+  animation: fadeUp 1s ease-out;
+}
+
+.ml-hero-title-highlight {
+  color: var(--brand-primary);
+  display: block;
+}
+
+.ml-hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--brand-secondary);
+  margin: 0;
+  animation: fadeUp 1.1s ease-out;
+}
+
+.ml-hero-desc {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 90%;
+  margin: 0;
+  animation: fadeIn 1.2s ease-out;
+}
+
+.ml-hero-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px 24px;
+  max-width: fit-content;
+  animation: fadeScale 1.3s ease-out;
+}
+
+.ml-hero-card-title {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.ml-hero-card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ml-hero-card-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.ml-hero-check {
+  color: var(--brand-primary);
+  font-weight: bold;
+}
+
+.ml-hero-info-row {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  margin-top: 8px;
+  animation: fadeIn 1.4s ease-out;
+}
+
+.ml-hero-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ml-hero-info-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ml-hero-info-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.ml-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+  animation: fadeIn 1.5s ease-out;
+}
+
+.ml-hero-btn-primary {
+  background: var(--brand-gradient);
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ml-hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(22, 163, 74, 0.4);
+}
+
+.ml-hero-btn-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ml-hero-btn-secondary:hover {
+  border-color: var(--text-primary);
+  background-color: var(--card-bg-hover);
+}
+
+
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .ml-hero-title { font-size: 2.8rem; }
+  .ml-hero-left { width: 60%; }
+  .ml-hero-right { width: 40%; }
+}
+
+@media (max-width: 768px) {
+  .ml-hero-bg {
+    background-position: 75% center;
+  }
+  .ml-hero-container {
+    flex-direction: column;
+    padding: 100px 20px 40px;
+  }
+  .ml-hero-overlay {
+    background: linear-gradient(180deg, rgba(3, 8, 7, 0.95) 0%, rgba(3, 10, 8, 0.85) 50%, rgba(3, 12, 9, 0.6) 80%, rgba(3, 15, 11, 0.2) 100%);
+  }
+  .ml-hero-left {
+    width: 100%;
+    z-index: 20;
+  }
+  .ml-hero-right {
+    display: none; /* Hide the empty right container completely on mobile */
+  }
+  .ml-hero-title { font-size: 2.25rem; }
+  .ml-hero-subtitle { font-size: 1.25rem; }
+  .ml-hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .ml-hero-btn-primary, .ml-hero-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  .ml-hero-info-row {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ml-hero-label, .ml-hero-title, .ml-hero-subtitle, .ml-hero-desc, 
+  .ml-hero-card, .ml-hero-info-row, .ml-hero-actions {
+    animation: none;
+  }
+}

@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import SEOHead from '../components/SEOHead';
+import ProgramKeyHighlights from '../components/ProgramKeyHighlights';
+import CurriculumSection from '../components/CurriculumSection';
+import ProgramTechnologies from '../components/ProgramTechnologies';
+import LMSPromoSection from '../components/LMSPromoSection';
+import StudentSuccessGallery from '../components/StudentSuccessGallery';
+import InternshipApplicationCTA from '../components/InternshipApplicationCTA';
 import { internshipsData } from '../data/programsData';
 import { buildCourseSchema } from '../utils/schemaBuilders';
+import '../styles/MLInternshipHero.css';
 
 export default function InternshipDetails() {
   const { slug } = useParams();
@@ -25,8 +34,121 @@ export default function InternshipDetails() {
     { name: internship.title, url: `https://www.learndepthacademy.com/internships/${slug}` }
   ];
 
+  if (slug === 'machine-learning') {
+    return (
+      <>
+        <Navbar />
+        <main className="internship-details-page">
+        <SEOHead 
+          title={internship.seoTitle}
+          description={internship.description}
+          canonicalUrl={`https://www.learndepthacademy.com/internships/${slug}`}
+          schema={buildCourseSchema(internship)}
+          breadcrumbs={breadcrumbs}
+        />
+        
+        <section className="ml-hero-section">
+          <div className="ml-hero-bg"></div>
+          <div className="ml-hero-overlay"></div>
+          <div className="ml-hero-green-tint"></div>
+          
+          <div className="ml-hero-container">
+            <div className="ml-hero-left">
+              <div className="ml-hero-label">
+                <span className="ml-hero-label-dot"></span>
+                Machine Learning Internship Program
+              </div>
+              
+              <h1 className="ml-hero-title">
+                Build Real-World <br/>
+                <span className="ml-hero-title-highlight">Machine Learning Skills</span>
+              </h1>
+              
+              <h2 className="ml-hero-subtitle">From Data to Intelligent Models</h2>
+              
+              <p className="ml-hero-desc">
+                Learn Python, data analysis, machine learning algorithms, model building and deployment through hands-on projects, mentor guidance and practical industry-oriented learning.
+              </p>
+              
+              <div className="ml-hero-card">
+                <div className="ml-hero-card-title">Machine Learning Focus</div>
+                <ul className="ml-hero-card-list">
+                  <li className="ml-hero-card-item">
+                    <span className="ml-hero-check">✓</span> Python + Data Analysis
+                  </li>
+                  <li className="ml-hero-card-item">
+                    <span className="ml-hero-check">✓</span> ML Model Building
+                  </li>
+                  <li className="ml-hero-card-item">
+                    <span className="ml-hero-check">✓</span> Real-World Projects
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="ml-hero-info-row">
+                <div className="ml-hero-info-item">
+                  <span className="ml-hero-info-label">Internship Mode</span>
+                  <span className="ml-hero-info-value">{internship.mode}</span>
+                </div>
+                <div className="ml-hero-info-item">
+                  <span className="ml-hero-info-label">Duration</span>
+                  <span className="ml-hero-info-value">{internship.duration}</span>
+                </div>
+                <div className="ml-hero-info-item">
+                  <span className="ml-hero-info-label">Certificate</span>
+                  <span className="ml-hero-info-value">On Successful Completion</span>
+                </div>
+                <div className="ml-hero-info-item">
+                  <span className="ml-hero-info-label">Batch</span>
+                  <span className="ml-hero-info-value">Admissions Open</span>
+                </div>
+              </div>
+              
+              <div className="ml-hero-actions">
+                <button 
+                  className="ml-hero-btn-primary"
+                  onClick={() => window.location.href = '/?program=' + slug + '#internship-form'}
+                >
+                  Apply for ML Internship →
+                </button>
+                <button 
+                  className="ml-hero-btn-secondary"
+                  onClick={() => {
+                    const detailsSection = document.getElementById('details-section');
+                    if (detailsSection) detailsSection.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  View Program Details
+                </button>
+              </div>
+            </div>
+            
+            <div className="ml-hero-right">
+              {/* Floating images and badges removed because they are now natively baked into the new full-bleed ML hero background image */}
+            </div>
+          </div>
+        </section>
+
+        <ProgramKeyHighlights />
+        <ProgramTechnologies />
+        <CurriculumSection />
+
+        <StudentSuccessGallery />
+
+        <InternshipApplicationCTA />
+
+        <LMSPromoSection />
+      </main>
+      <Footer />
+      </>
+    );
+  }
+
+  // Default layout for other internships
   return (
-    <main className="internship-details-page" style={{ paddingTop: '80px', minHeight: '80vh' }}>
+    <>
+      <Navbar />
+      <main className="internship-details-page" style={{ paddingTop: '80px', minHeight: '80vh' }}>
       <SEOHead 
         title={internship.seoTitle}
         description={internship.description}
@@ -63,5 +185,7 @@ export default function InternshipDetails() {
         </ul>
       </section>
     </main>
+    <Footer />
+    </>
   );
 }

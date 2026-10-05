@@ -1,0 +1,194 @@
+.ld-lms-promo-section {
+  padding: 100px 20px 0; /* Huge top padding, 0 bottom padding so the LMS image touches the bottom or is close to it */
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.ld-lms-promo-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+.ld-lms-promo-header {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 24px;
+}
+
+.ld-lms-promo-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #1e293b; /* Very dark slate */
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+}
+
+.ld-lms-promo-highlight {
+  color: var(--brand-primary, #10b981);
+}
+
+.ld-lms-promo-subtitle {
+  font-size: 1.25rem;
+  color: #64748b; /* Soft slate gray */
+  line-height: 1.6;
+}
+
+/* Benefits Row */
+.ld-lms-promo-benefits {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.ld-lms-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.ld-lms-check {
+  width: 22px;
+  height: 22px;
+  color: var(--brand-primary, #10b981);
+}
+
+/* CTA */
+.ld-lms-promo-cta-wrapper {
+  margin-bottom: 80px; /* Big gap before the LMS image */
+}
+
+.ld-lms-promo-cta {
+  background-color: var(--brand-primary, #10b981);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 40px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.25);
+}
+
+.ld-lms-promo-cta:hover {
+  background-color: #059669; /* Darker emerald */
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(16, 185, 129, 0.35);
+}
+
+/* Showcase Area */
+.ld-lms-promo-showcase {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  perspective: 1000px; /* In case we want to add 3D, but flat is cleaner per user request */
+  z-index: 1;
+}
+
+/* Subtle Green Ambient Glow */
+.ld-lms-glow-backdrop {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 60%);
+  filter: blur(80px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Image Wrapper and Image */
+.ld-lms-image-wrapper {
+  background-color: #ffffff;
+  border-radius: 16px 16px 0 0; /* Only top corners rounded if touching bottom, or all rounded */
+  border-radius: 24px;
+  padding: 8px; /* Slight padding to act as a laptop screen bezel if desired, or just border */
+  background: linear-gradient(145deg, #ffffff, #f1f5f9);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08), 0 10px 20px rgba(0, 0, 0, 0.04);
+  /* Entrance animation */
+  animation: lmsEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+}
+
+.ld-lms-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) inset;
+}
+
+@keyframes lmsEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .ld-lms-promo-showcase {
+    width: 95%;
+  }
+  .ld-lms-promo-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ld-lms-promo-section {
+    padding-top: 60px;
+  }
+  
+  .ld-lms-promo-title {
+    font-size: 2.3rem;
+  }
+  
+  .ld-lms-promo-subtitle {
+    font-size: 1.1rem;
+    padding: 0 10px;
+  }
+
+  .ld-lms-promo-benefits {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+
+  .ld-lms-promo-cta-wrapper {
+    margin-bottom: 50px;
+  }
+
+  .ld-lms-promo-showcase {
+    width: 100%;
+    padding: 0 10px;
+  }
+  
+  .ld-lms-image-wrapper {
+    border-radius: 16px;
+    padding: 4px;
+  }
+  
+  .ld-lms-image {
+    border-radius: 12px;
+  }
+}
