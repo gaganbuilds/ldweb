@@ -57,6 +57,9 @@ export default function AdminSidebar({ isOpen, onClose }) {
             <NavLink to="/admin/testimonials" className={({isActive}) => `admin-nav-item ${isActive ? 'active' : ''}`} onClick={onClose}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '12px' }}><MessageSquare size={18} /> Testimonials</span>
             </NavLink>
+            <NavLink to="/admin/certificates" className={({isActive}) => `admin-nav-item ${isActive ? 'active' : ''}`} onClick={onClose}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '12px' }}><FileText size={18} /> Certificates</span>
+            </NavLink>
           </div>
 
           <div className="admin-nav-group">

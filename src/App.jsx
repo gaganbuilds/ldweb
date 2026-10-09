@@ -11,6 +11,7 @@ import JobApplication from './pages/JobApplication';
 import CampusAmbassador from './pages/CampusAmbassador';
 import DataSciencePage from './pages/DataSciencePage';
 import HireFromUs from './pages/HireFromUs';
+import CertificateVerification from './pages/CertificateVerification';
 
 // Admin imports
 import { AuthProvider } from './admin/context/AuthContext';
@@ -39,6 +40,9 @@ import ProgramEnquiryList from './admin/pages/enquiries/ProgramEnquiryList';
 import InternshipEnquiryList from './admin/pages/enquiries/InternshipEnquiryList';
 import HireFromUsList from './admin/pages/enquiries/HireFromUsList';
 import InternshipApplicationList from './admin/pages/applications/InternshipApplicationList';
+
+// Certificates
+import CertificateList from './admin/pages/certificates/CertificateList';
 
 // Careers
 import JobCategoryList from './admin/pages/careers/JobCategoryList';
@@ -70,6 +74,7 @@ function App() {
           <Route path="/campus-ambassador" element={<CampusAmbassador />} />
           <Route path="/data-science" element={<DataSciencePage />} />
           <Route path="/hire-from-us" element={<HireFromUs />} />
+          <Route path="/verify-certificate" element={<CertificateVerification />} />
           
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
@@ -112,6 +117,9 @@ function App() {
               <Route path="internship-enquiries" element={<InternshipEnquiryList />} />
               <Route path="internship-applications" element={<InternshipApplicationList />} />
               <Route path="hire-from-us" element={<HireFromUsList />} />
+
+              {/* Certificates */}
+              <Route path="certificates" element={<CertificateList />} />
 
               {/* Careers */}
               <Route path="jobs" element={<JobList />} />
