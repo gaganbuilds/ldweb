@@ -81,6 +81,12 @@ export default function CertificateFormModal({ isOpen, onClose, onSuccess, initi
     if (!formData.recipient_name) {
       return setError("Recipient name is required");
     }
+    if (!formData.recipient_email) {
+      return setError("Recipient email is required");
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.recipient_email)) {
+      return setError("Please enter a valid email address");
+    }
     if (!formData.certificate_title) {
       return setError("Certificate title is required");
     }
@@ -169,8 +175,8 @@ export default function CertificateFormModal({ isOpen, onClose, onSuccess, initi
               <input type="text" name="recipient_name" value={formData.recipient_name} onChange={handleChange} className="admin-input" style={{ width: '100%' }} required />
             </div>
             <div>
-              <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500' }}>Recipient Email (Optional)</label>
-              <input type="email" name="recipient_email" value={formData.recipient_email} onChange={handleChange} className="admin-input" style={{ width: '100%' }} placeholder="For ID retrieval feature" />
+              <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500' }}>Recipient Email *</label>
+              <input type="email" name="recipient_email" value={formData.recipient_email} onChange={handleChange} className="admin-input" style={{ width: '100%' }} placeholder="john@example.com" required />
             </div>
           </div>
 

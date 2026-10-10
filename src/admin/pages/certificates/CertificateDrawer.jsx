@@ -107,6 +107,13 @@ export default function CertificateDrawer({ id, onClose, onUpdated, onEdit }) {
                 <div style={{ fontSize: '18px', fontWeight: '600', color: '#111827' }}>{certificate.recipient_name}</div>
               </div>
 
+              {certificate.recipient_email && (
+                <div style={{ marginBottom: '24px' }}>
+                  <div style={{ fontSize: '13px', color: '#6b7280', marginBottom: '4px' }}>Recipient Email</div>
+                  <div style={{ fontSize: '15px', color: '#111827' }}>{certificate.recipient_email}</div>
+                </div>
+              )}
+
               <div style={{ marginBottom: '24px' }}>
                 <div style={{ fontSize: '13px', color: '#6b7280', marginBottom: '4px' }}>Certificate Title</div>
                 <div style={{ fontSize: '16px', fontWeight: '500', color: '#374151' }}>{certificate.certificate_title}</div>

@@ -14,6 +14,7 @@ export default function CertificateImportModal({ isOpen, onClose, onSuccess, cat
   const requiredColumns = [
     'certificate_number',
     'recipient_name',
+    'recipient_email',
     'certificate_title',
     'issued_date',
     'start_date',
@@ -48,8 +49,8 @@ export default function CertificateImportModal({ isOpen, onClose, onSuccess, cat
   const downloadSample = () => {
     const headers = requiredColumns.join(',');
     const sampleRows = [
-      'LD-INT-2026-000001,Rahul Kumar,Machine Learning Internship,2026-10-07,2026-09-01,2026-09-30,valid,Successfully completed the Machine Learning Internship Program.',
-      'LD-INT-2026-000002,Ananya Sharma,Web Development Internship,2026-10-07,2026-09-01,2026-09-30,valid,Successfully completed the Web Development Internship Program.'
+      'LD-INT-2026-000001,Rahul Kumar,rahul@example.com,Machine Learning Internship,2026-10-07,2026-09-01,2026-09-30,valid,Successfully completed the Machine Learning Internship Program.',
+      'LD-INT-2026-000002,Ananya Sharma,ananya@example.com,Web Development Internship,2026-10-07,2026-09-01,2026-09-30,valid,Successfully completed the Web Development Internship Program.'
     ];
     const csvContent = headers + '\n' + sampleRows.join('\n');
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -131,6 +132,10 @@ export default function CertificateImportModal({ isOpen, onClose, onSuccess, cat
           rowError = "Certificate number already exists in database";
         } else if (!record.recipient_name) {
           rowError = "Recipient name is required";
+        } else if (!record.recipient_email) {
+          rowError = "Recipient email is required";
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(record.recipient_email)) {
+          rowError = "Invalid email format";
         } else if (!record.certificate_title) {
           rowError = "Certificate title is required";
         } else if (!record.issued_date) {
@@ -152,6 +157,7 @@ export default function CertificateImportModal({ isOpen, onClose, onSuccess, cat
           valid.push({
             certificate_number: record.certificate_number,
             recipient_name: record.recipient_name,
+            recipient_email: record.recipient_email,
             certificate_title: record.certificate_title,
             category_id: categoryId,
             issued_date: record.issued_date,

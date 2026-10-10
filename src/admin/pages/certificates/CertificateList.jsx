@@ -93,10 +93,11 @@ export default function CertificateList() {
         return;
       }
 
-      const headers = ['Certificate Number', 'Recipient Name', 'Certificate Title', 'Category', 'Issued Date', 'Start Date', 'End Date', 'Status', 'Description'];
+      const headers = ['Certificate Number', 'Recipient Name', 'Recipient Email', 'Certificate Title', 'Category', 'Issued Date', 'Start Date', 'End Date', 'Status', 'Description'];
       const rows = data.map(c => [
         c.certificate_number,
         `"${c.recipient_name}"`,
+        `"${c.recipient_email || ''}"`,
         `"${c.certificate_title}"`,
         `"${c.category?.name || ''}"`,
         c.issued_date,
