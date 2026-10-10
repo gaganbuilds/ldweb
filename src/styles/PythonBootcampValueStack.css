@@ -1,0 +1,147 @@
+.pb-value-section {
+  padding: 80px 20px;
+  background-color: #f8fafc;
+  display: flex;
+  justify-content: center;
+}
+
+.pb-value-container {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+.pb-value-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.pb-value-accent {
+  color: #2563eb;
+}
+
+.pb-value-subheading {
+  font-size: 1.1rem;
+  color: #475569;
+  margin-bottom: 40px;
+}
+
+.pb-value-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.pb-value-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.pb-value-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #f1f5f9;
+  border-radius: 8px;
+}
+
+.pb-core {
+  background: #ebf5ff;
+  border: 1px solid #bfdbfe;
+}
+
+.pb-value-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.pb-check-icon {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.pb-value-item-name {
+  color: #1e293b;
+  font-size: 1.05rem;
+}
+
+.pb-value-item-price {
+  font-weight: 600;
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.pb-value-summary {
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 2px dashed #e2e8f0;
+}
+
+.pb-value-total {
+  font-size: 1.2rem;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+.pb-value-launch {
+  font-size: 1.5rem;
+  color: #0f172a;
+  margin-bottom: 30px;
+}
+
+.pb-value-launch strong {
+  font-size: 2.5rem;
+  color: #2563eb;
+}
+
+.pb-value-onetime {
+  font-size: 1rem;
+  color: #475569;
+  font-weight: normal;
+}
+
+.pb-value-cta {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.pb-value-cta:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 768px) {
+  .pb-value-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .pb-value-heading {
+    font-size: 2rem;
+  }
+}

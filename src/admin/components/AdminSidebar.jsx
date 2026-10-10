@@ -73,6 +73,9 @@ export default function AdminSidebar({ isOpen, onClose }) {
             <NavLink to="/admin/internship-applications" className={({isActive}) => `admin-nav-item ${isActive ? 'active' : ''}`} onClick={onClose}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '12px' }}><Inbox size={18} /> Internship Applications</span>
             </NavLink>
+            <NavLink to="/admin/python-bootcamp" className={({isActive}) => `admin-nav-item ${isActive ? 'active' : ''}`} onClick={onClose}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '12px' }}><Inbox size={18} /> Python Bootcamp</span>
+            </NavLink>
             <NavLink to="/admin/hire-from-us" className={({isActive}) => `admin-nav-item ${isActive ? 'active' : ''}`} onClick={onClose}>
               <span style={{ display: 'flex', alignItems: 'center', gap: '12px' }}><Briefcase size={18} /> Hire From Us</span>
             </NavLink>

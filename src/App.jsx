@@ -12,6 +12,7 @@ import CampusAmbassador from './pages/CampusAmbassador';
 import DataSciencePage from './pages/DataSciencePage';
 import HireFromUs from './pages/HireFromUs';
 import CertificateVerification from './pages/CertificateVerification';
+import PythonBootcampPage from './pages/PythonBootcampPage';
 
 // Admin imports
 import { AuthProvider } from './admin/context/AuthContext';
@@ -40,6 +41,7 @@ import ProgramEnquiryList from './admin/pages/enquiries/ProgramEnquiryList';
 import InternshipEnquiryList from './admin/pages/enquiries/InternshipEnquiryList';
 import HireFromUsList from './admin/pages/enquiries/HireFromUsList';
 import InternshipApplicationList from './admin/pages/applications/InternshipApplicationList';
+import PythonBootcampApplicationList from './admin/pages/applications/PythonBootcampApplicationList';
 
 // Certificates
 import CertificateList from './admin/pages/certificates/CertificateList';
@@ -75,6 +77,7 @@ function App() {
           <Route path="/data-science" element={<DataSciencePage />} />
           <Route path="/hire-from-us" element={<HireFromUs />} />
           <Route path="/verify-certificate" element={<CertificateVerification />} />
+          <Route path="/python-bootcamp" element={<PythonBootcampPage />} />
           
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
@@ -116,6 +119,7 @@ function App() {
               <Route path="program-enquiries" element={<ProgramEnquiryList />} />
               <Route path="internship-enquiries" element={<InternshipEnquiryList />} />
               <Route path="internship-applications" element={<InternshipApplicationList />} />
+              <Route path="python-bootcamp" element={<PythonBootcampApplicationList />} />
               <Route path="hire-from-us" element={<HireFromUsList />} />
 
               {/* Certificates */}
