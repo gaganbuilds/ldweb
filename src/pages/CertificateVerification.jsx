@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Search, CheckCircle, XCircle, AlertTriangle, Loader2 } from 'lucide-react';
 import { certificateService } from '../admin/services/certificateService';
 import { Lock, Copy, Check } from 'lucide-react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 function CertificateRetrieval({ onVerify }) {
   const [name, setName] = useState('');
@@ -216,7 +218,9 @@ export default function CertificateVerification() {
   };
 
   return (
-    <div style={{ minHeight: '80vh', backgroundColor: '#f9fafb', padding: '60px 20px', fontFamily: 'Inter, sans-serif' }}>
+    <>
+      <Navbar />
+      <div style={{ minHeight: '80vh', backgroundColor: '#f9fafb', padding: '60px 20px', fontFamily: 'Inter, sans-serif' }}>
       <div style={{ maxWidth: '600px', margin: '0 auto' }}>
         
         {/* Header */}
@@ -402,5 +406,7 @@ export default function CertificateVerification() {
         }
       `}</style>
     </div>
+      <Footer />
+    </>
   );
 }
