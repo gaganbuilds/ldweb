@@ -1,6 +1,169 @@
 import React, { useState } from 'react';
 import { Search, CheckCircle, XCircle, AlertTriangle, Loader2 } from 'lucide-react';
 import { certificateService } from '../admin/services/certificateService';
+import { Lock, Copy, Check } from 'lucide-react';
+
+function CertificateRetrieval({ onVerify }) {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState(null); // { type: 'success'|'error'|'not_found', data: [] }
+  const [copied, setCopied] = useState(null);
+
+  const handleRetrieve = async (e) => {
+    e.preventDefault();
+    if (!name.trim() || !email.trim()) return;
+
+    // Basic email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setResult({ type: 'error', message: 'Please enter a valid email address.' });
+      return;
+    }
+
+    setLoading(true);
+    setResult(null);
+    setCopied(null);
+
+    try {
+      const { data, error } = await certificateService.getCertificateIdByDetails(name.trim(), email.trim());
+      
+      if (error) {
+        setResult({ type: 'error', message: 'Something went wrong. Please try again later.' });
+      } else if (data && data.length > 0) {
+        setResult({ type: 'success', data });
+      } else {
+        setResult({ type: 'not_found' });
+      }
+    } catch (err) {
+      setResult({ type: 'error', message: 'An unexpected error occurred. Please try again.' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const copyToClipboard = (text, id) => {
+    navigator.clipboard.writeText(text);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 2000);
+  };
+
+  return (
+    <div style={{ marginTop: '48px', backgroundColor: 'white', padding: '32px', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' }}>
+      <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+        <h3 style={{ fontSize: '20px', fontWeight: '700', color: '#111827', marginBottom: '8px' }}>
+          Know Your Certificate ID?
+        </h3>
+        <p style={{ fontSize: '14px', color: '#4b5563', lineHeight: '1.5' }}>
+          Already received your certificate but can't remember its ID? Enter your name and registered email address to find it.
+        </p>
+      </div>
+
+      <form onSubmit={handleRetrieve}>
+        <div style={{ marginBottom: '16px' }}>
+          <label htmlFor="retrievalName" style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
+            Full Name
+          </label>
+          <input
+            id="retrievalName"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="John Doe"
+            style={{ width: '100%', padding: '12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '15px', outline: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box' }}
+            onFocus={(e) => e.target.style.borderColor = '#16a34a'}
+            onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+            required
+          />
+        </div>
+
+        <div style={{ marginBottom: '24px' }}>
+          <label htmlFor="retrievalEmail" style={{ display: 'block', fontSize: '14px', fontWeight: '600', color: '#374151', marginBottom: '8px' }}>
+            Registered Email Address
+          </label>
+          <input
+            id="retrievalEmail"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="john@example.com"
+            style={{ width: '100%', padding: '12px', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '15px', outline: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box' }}
+            onFocus={(e) => e.target.style.borderColor = '#16a34a'}
+            onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          disabled={loading || !name.trim() || !email.trim()}
+          style={{ width: '100%', padding: '12px', backgroundColor: '#111827', color: 'white', border: 'none', borderRadius: '8px', fontSize: '15px', fontWeight: '600', cursor: loading || !name.trim() || !email.trim() ? 'not-allowed' : 'pointer', opacity: loading || !name.trim() || !email.trim() ? 0.7 : 1, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', transition: 'background-color 0.2s', marginBottom: '16px' }}
+        >
+          {loading ? <Loader2 className="spinner" size={18} style={{ animation: 'spin 1s linear infinite' }} /> : null}
+          {loading ? 'Searching...' : 'Find My Certificate ID'}
+        </button>
+
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', color: '#6b7280', fontSize: '13px' }}>
+          <Lock size={14} />
+          <span>Your details are used only to locate your certificate record.</span>
+        </div>
+      </form>
+
+      {/* Result States */}
+      {result?.type === 'success' && (
+        <div style={{ marginTop: '24px', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '8px', padding: '20px' }}>
+          <h4 style={{ fontSize: '16px', fontWeight: '600', color: '#166534', marginBottom: '16px' }}>Matching Certificates Found</h4>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {result.data.map((cert, idx) => (
+              <div key={idx} style={{ backgroundColor: 'white', padding: '16px', borderRadius: '8px', border: '1px solid #dcfce7', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div>
+                  <div style={{ fontSize: '12px', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '2px' }}>Certificate</div>
+                  <div style={{ fontSize: '15px', fontWeight: '500', color: '#111827' }}>{cert.certificate_title}</div>
+                </div>
+                
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: '#f3f4f6', padding: '6px 12px', borderRadius: '6px' }}>
+                    <span style={{ fontSize: '14px', fontWeight: '600', color: '#374151', fontFamily: 'monospace' }}>{cert.certificate_number}</span>
+                    <button 
+                      onClick={() => copyToClipboard(cert.certificate_number, idx)}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#4b5563', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                      title="Copy Certificate ID"
+                    >
+                      {copied === idx ? <Check size={16} color="#16a34a" /> : <Copy size={16} />}
+                    </button>
+                  </div>
+                  
+                  <button 
+                    onClick={() => onVerify(cert.certificate_number)}
+                    style={{ fontSize: '13px', fontWeight: '600', color: '#16a34a', background: 'none', border: '1px solid #16a34a', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer' }}
+                  >
+                    Verify This Certificate
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {result?.type === 'not_found' && (
+        <div style={{ marginTop: '24px', backgroundColor: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '20px', textAlign: 'center' }}>
+          <p style={{ color: '#4b5563', fontSize: '14px' }}>
+            We couldn't find a certificate matching those details. Please check your name and registered email address.
+          </p>
+        </div>
+      )}
+
+      {result?.type === 'error' && (
+        <div style={{ marginTop: '24px', backgroundColor: '#fef2f2', border: '1px solid #fecaca', borderRadius: '8px', padding: '20px', textAlign: 'center' }}>
+          <p style={{ color: '#b91c1c', fontSize: '14px' }}>
+            {result.message}
+          </p>
+        </div>
+      )}
+
+    </div>
+  );
+}
 
 export default function CertificateVerification() {
   const [certificateNumber, setCertificateNumber] = useState('');
@@ -223,6 +386,13 @@ export default function CertificateVerification() {
             </p>
           </div>
         )}
+
+        {/* Know Your Certificate ID Section */}
+        <CertificateRetrieval onVerify={(certId) => {
+          setCertificateNumber(certId);
+          // We must scroll to top or trigger verify automatically
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }} />
 
       </div>
       <style>{`

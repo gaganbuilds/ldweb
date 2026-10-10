@@ -13,6 +13,10 @@ export const navigation = [
     ]
   },
   {
+    label: "Python Bootcamp",
+    href: "/python-bootcamp"
+  },
+  {
     label: "CodeDepth",
     href: "https://codedepth.site",
     external: true

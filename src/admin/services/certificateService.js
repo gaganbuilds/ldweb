@@ -73,6 +73,23 @@ export const certificateService = {
     }
   },
 
+  // Get certificate ID by details (Public secure lookup)
+  async getCertificateIdByDetails(name, email) {
+    try {
+      const { data, error } = await supabase
+        .rpc('get_certificate_id_by_details', {
+          p_name: name,
+          p_email: email
+        });
+        
+      if (error) throw error;
+      return { data, error: null };
+    } catch (error) {
+      console.error('Error finding certificate:', error);
+      return { data: null, error };
+    }
+  },
+
   // Create new certificate
   async createCertificate(certificateData) {
     try {

@@ -6,6 +6,7 @@ export default function CertificateFormModal({ isOpen, onClose, onSuccess, initi
   const [formData, setFormData] = useState({
     certificate_number: '',
     recipient_name: '',
+    recipient_email: '',
     certificate_title: '',
     issued_date: '',
     start_date: '',
@@ -26,6 +27,7 @@ export default function CertificateFormModal({ isOpen, onClose, onSuccess, initi
         setFormData({
           certificate_number: initialData.certificate_number || '',
           recipient_name: initialData.recipient_name || '',
+          recipient_email: initialData.recipient_email || '',
           certificate_title: initialData.certificate_title || '',
           issued_date: initialData.issued_date ? initialData.issued_date.split('T')[0] : '',
           start_date: initialData.start_date ? initialData.start_date.split('T')[0] : '',
@@ -39,6 +41,7 @@ export default function CertificateFormModal({ isOpen, onClose, onSuccess, initi
         setFormData({
           certificate_number: `LD-INT-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 100000)).padStart(6, '0')}`,
           recipient_name: '',
+          recipient_email: '',
           certificate_title: '',
           issued_date: new Date().toISOString().split('T')[0],
           start_date: '',
@@ -160,9 +163,15 @@ export default function CertificateFormModal({ isOpen, onClose, onSuccess, initi
             </div>
           </div>
 
-          <div style={{ marginBottom: '16px' }}>
-            <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500' }}>Recipient Name *</label>
-            <input type="text" name="recipient_name" value={formData.recipient_name} onChange={handleChange} className="admin-input" style={{ width: '100%' }} required />
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+            <div>
+              <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500' }}>Recipient Name *</label>
+              <input type="text" name="recipient_name" value={formData.recipient_name} onChange={handleChange} className="admin-input" style={{ width: '100%' }} required />
+            </div>
+            <div>
+              <label style={{ display: 'block', marginBottom: '6px', fontSize: '14px', fontWeight: '500' }}>Recipient Email (Optional)</label>
+              <input type="email" name="recipient_email" value={formData.recipient_email} onChange={handleChange} className="admin-input" style={{ width: '100%' }} placeholder="For ID retrieval feature" />
+            </div>
           </div>
 
           <div style={{ marginBottom: '16px' }}>

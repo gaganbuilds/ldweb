@@ -21,6 +21,7 @@ const programs = [
   { label: "Machine Learning", href: "/?program=machine-learning#internship-form" },
   { label: "Data Science", href: "/?program=data-science#internship-form" },
   { label: "Python", href: "/?program=python#internship-form" },
+  { label: "Python Bootcamp", href: "/python-bootcamp" },
   { label: "Web Development", href: "/?program=web-development#internship-form" },
   { label: "App Development", href: "/?program=app-development#internship-form" },
   { label: "AI / Generative AI", href: "/?program=ai#internship-form" },

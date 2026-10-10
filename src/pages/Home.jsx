@@ -3,6 +3,7 @@ import SEOHead from '../components/SEOHead';
 import { buildWebSiteSchema, buildOrganizationSchema } from '../utils/schemaBuilders';
 import TopAnnouncementBar from '../components/TopAnnouncementBar';
 import Hero from '../components/Hero';
+import PythonBootcampPromoSection from '../components/PythonBootcampPromoSection';
 import InternshipLeadSection from '../components/InternshipLeadSection';
 import PartnerInstitutes from '../components/PartnerInstitutes';
 import CareerJourneySection from '../components/CareerJourneySection';
@@ -31,6 +32,7 @@ export default function Home() {
       <TopAnnouncementBar />
       <main>
         <Hero />
+        <PythonBootcampPromoSection />
         <InternshipLeadSection />
         <PartnerInstitutes />
         <CareerJourneySection />
