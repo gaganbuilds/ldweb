@@ -7,8 +7,8 @@ export default function MLInternshipPopup() {
   const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
-    // Check if the user is on an admin route
-    if (window.location.pathname.startsWith('/admin')) {
+    // Check if the user is on an admin route or python bootcamp page
+    if (window.location.pathname.startsWith('/admin') || window.location.pathname.startsWith('/python-bootcamp')) {
       return;
     }
 
